@@ -1,0 +1,107 @@
+/* Black & Grey Worksheet Builder - Minimal UI */
+:root{
+  --bg:#0f0f10;
+  --panel:#18191b;
+  --ink:#ededee;
+  --ink-dim:#b7b7ba;
+  --line:#2a2b2f;
+  --accent:#8b8d94; /* neutral grey accent */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,#0d0d0e,#121315);
+}
+
+.app-header{
+  border-bottom:1px solid var(--line);
+  padding:20px 16px;
+}
+.brand{
+  display:flex; gap:12px; align-items:center; max-width:1200px; margin:0 auto;
+}
+.brand h1{font-size:1.4rem; margin:0 0 4px 0; font-weight:800}
+.brand p{margin:0; color:var(--ink-dim)}
+.brand-icon{
+  width:44px; height:44px; border-radius:12px; border:1px solid var(--line);
+  background:
+    radial-gradient(closest-side, #2b2c30 60%, transparent 61%),
+    conic-gradient(from 0deg, #2a2b2f, #3a3b41, #232429);
+  box-shadow:0 6px 16px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.container{max-width:1200px; margin:18px auto; padding:0 16px;}
+
+.panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.panel-title{margin:0 0 16px 0; font-size:1.1rem}
+
+.grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+}
+.form-control{display:flex; flex-direction:column; gap:8px}
+.form-control--full{grid-column:1/-1}
+.form-row{grid-column:1/-1; display:flex; gap:24px; align-items:center; flex-wrap:wrap}
+label{font-size:.9rem; color:var(--ink-dim)}
+input[type=text], input[type=number], select, textarea{
+  width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--line);
+  background:#101113; color:var(--ink);
+  outline:none;
+}
+textarea{resize:vertical}
+.range-label{display:flex; justify-content:space-between; color:var(--ink-dim); font-size:.8rem; margin-top:-6px}
+.checkbox{display:flex; align-items:center; gap:8px; color:var(--ink-dim)}
+
+.actions{grid-column:1/-1; display:flex; gap:10px; justify-content:flex-end; margin-top:6px}
+button{
+  padding:12px 16px; border-radius:12px; background:#1f2023; color:var(--ink);
+  border:1px solid var(--line); cursor:pointer; font-weight:600;
+}
+button.primary{background:#2c2d31}
+button:hover{filter:brightness(1.1)}
+
+.preview{
+  background:#0e0f10; border-radius:14px; border:1px dashed var(--line);
+  padding:16px;
+}
+.preview-inner{display:flex; justify-content:center}
+.preview-page{
+  width:816px; /* Letter 96dpi */
+  height:1056px; /* Letter 96dpi */
+  background:white; color:#111; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+  padding:46px 54px; position:relative;
+}
+.preview-header .name-date{
+  display:flex; justify-content:space-between; font-size:.9rem; color:#111;
+  border-bottom:2px solid #1a1a1a; padding-bottom:10px; margin-bottom:10px;
+}
+.preview-header h3{margin:4px 0 6px 0; font-size:1.2rem; color:#111}
+.preview-header .meta{color:#444; margin-bottom:10px}
+.divider{height:6px; background:repeating-linear-gradient(90deg,#111,#111 8px,#777 8px,#777 12px); opacity:.22; border-radius:6px; margin-bottom:10px}
+
+.preview-body{font-size:.95rem; line-height:1.5; color:#111}
+.preview-body h4{margin:16px 0 6px 0}
+.preview-body .q{margin:10px 0}
+.preview-body .line{display:block; border-bottom:1px solid #555; margin:8px 0 14px 0}
+
+.preview-footer{
+  position:absolute; left:0; right:0; bottom:22px; text-align:center; color:#555; font-size:.8rem;
+}
+
+.app-footer{
+  color:var(--ink-dim); text-align:center; padding:18px; border-top:1px solid var(--line);
+}
+@media (max-width:980px){
+  .grid{grid-template-columns:1fr 1fr}
+  .preview-page{transform:scale(.72); transform-origin:top left; height:760px}
+}
